@@ -1,6 +1,6 @@
 ﻿Console.WriteLine("Fetching data: ");
 
-var task1 = Task.Run(WeatherService.GetWeatherSync);
+var task1 = Task.Run(WeatherService.GetWeatherAsync);
 var task2 = Task.Run(CityListReader.ReadCityListAsync);
 
 await Task.WhenAll(task1, task2);
@@ -30,7 +30,7 @@ class CityListReaderController
 
 class WeatherService
 {
-    public static async Task<string> GetWeatherSync()
+    public static async Task<string> GetWeatherAsync()
     {
         return await Task.Run(WeatherController.FetchWeatherData);
     }
